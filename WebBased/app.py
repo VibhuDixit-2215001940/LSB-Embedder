@@ -12,34 +12,90 @@ HTML = """
 <head>
   <title>LSB-Embedder</title>
   <style>
-    body { font-family: Arial, sans-serif; max-width: 700px; margin: auto; padding: 20px; }
-    h2 { margin-top: 40px; }
-    form { border: 1px solid #ccc; padding: 20px; border-radius: 10px; margin-bottom: 20px; }
-    input, textarea { margin-top: 10px; display: block; width: 100%; }
-    button { margin-top: 10px; padding: 10px 20px; }
+    body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #fff;
+  text-align: center;
+  background: 
+    url('./static/background.jpg') no-repeat calc(5% - 250px) center,   /* left image */
+    url('./static/jian.png') no-repeat calc(95% + 10px) center; /* right image */
+  background-attachment: fixed, fixed;
+  background-size: auto, auto; /* adjust each image size individually if needed */
+  margin: 0;
+  padding: 0;
+}
+    h1 {
+      margin-top: 30px;
+      font-size: 2.5rem;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+    }
+    form {
+      background: rgba(0,0,0,0.6);
+      padding: 20px;
+      margin: 20px auto;
+      border-radius: 15px;
+      width: 80%;
+      max-width: 500px;
+      box-shadow: 0px 4px 15px rgba(0,0,0,0.4);
+    }
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: bold;
+    }
+    input, textarea {
+      width: 95%;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      margin-bottom: 15px;
+      font-size: 1rem;
+    }
+    button {
+      background: linear-gradient(45deg, #00c6ff, #0072ff);
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: 0.3s ease;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+    }
+    button:hover {
+      background: linear-gradient(45deg, #0072ff, #00c6ff);
+      transform: scale(1.05);
+    }
+    pre {
+      background: rgba(0,0,0,0.7);
+      padding: 15px;
+      border-radius: 10px;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
   </style>
 </head>
 <body>
   <h1>🖼️ LSB-Embedder Web UI</h1>
 
-  <h2>🔒 Embed Secret in Image</h2>
   <form action="/embed" method="post" enctype="multipart/form-data">
+    <h2>🔒 Embed Secret in Image</h2>
     <label>Upload Image:</label>
     <input type="file" name="image" accept="image/*" required>
     <label>Secret Text:</label>
     <textarea name="secret" rows="4" required></textarea>
-    <button type="submit">Embed & Download</button>
+    <button type="submit">✨ Embed & Download</button>
   </form>
 
-  <h2>🔍 Extract Secret from Image</h2>
   <form action="/extract" method="post" enctype="multipart/form-data">
+    <h2>🔍 Extract Secret from Image</h2>
     <label>Upload Image:</label>
     <input type="file" name="image" accept="image/*" required>
-    <button type="submit">Extract Text</button>
+    <button type="submit">📖 Extract Text</button>
   </form>
 
   {% if extracted %}
-    <h3>Extracted Secret:</h3>
+    <h2>📜 Extracted Secret:</h2>
     <pre>{{ extracted }}</pre>
   {% endif %}
 </body>
