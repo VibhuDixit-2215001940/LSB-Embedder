@@ -1,6 +1,8 @@
 from flask import Flask, request, render_template_string, send_file
 from stegano import lsb
 import os
+from flask import url_for
+
 
 app = Flask(__name__)
 UPLOAD_FOLDER = "uploads"
@@ -17,8 +19,8 @@ HTML = """
   color: #fff;
   text-align: center;
   background: 
-    url('./static/background.jpg') no-repeat calc(5% - 250px) center,   /* left image */
-    url('./static/jian.png') no-repeat calc(95% + 10px) center; /* right image */
+  url('{{ url_for('static', filename='background.jpg') }}') no-repeat calc(5% - 250px) center,
+  url('{{ url_for('static', filename='jian.png') }}') no-repeat calc(95% + 10px) center;
   background-attachment: fixed, fixed;
   background-size: auto, auto; /* adjust each image size individually if needed */
   margin: 0;
