@@ -76,7 +76,7 @@ HTML = """
   </style>
 </head>
 <body>
-  <h1>🖼️ LSB-Embedder Web UI</h1>
+  <h1>🖼️ LSB-Embedder </h1>
 
   <form action="/embed" method="post" enctype="multipart/form-data">
     <h2>🔒 Embed Secret in Image</h2>
